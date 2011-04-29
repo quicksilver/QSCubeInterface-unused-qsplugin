@@ -82,7 +82,7 @@
       NSString *name = [self nameForGroupID:[[group value] intValue]];
       
       name = [[NSBundle bundleWithPath:@"/System/Library/CoreServices/Spotlight.app"] localizedStringForKey:name value:name table:@"MDSimpleGrouping"];
-      [groupedResults addObject:[QSSeparatorObject separatorWithName:name]];
+//      [groupedResults addObject:[QSSeparatorObject separatorWithName:name]];
       
       int i;
       for (i = 0; i < [group resultCount]; i++) {

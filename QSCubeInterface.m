@@ -8,7 +8,7 @@
 
 #import "QSCubeInterface.h"
 #import "QSShadowView.h"
-#import "QSPreferencesController.h"
+//#import "QSPreferencesController.h"
 
 @implementation QSCubeInterface
 
@@ -116,7 +116,7 @@
 
 
 - (IBAction)customize:(id)sender {
-	[QSPreferencesController showPaneWithIdentifier:@"QSCubeInterfacePrefPane"];
+//	[QSPreferencesController showPaneWithIdentifier:@"QSCubeInterfacePrefPane"];
 }
 - (void)windowDidLoad {
 	
@@ -211,7 +211,8 @@
 	
 	
     NSArray *theControls = [NSArray arrayWithObjects:dSelector, aSelector, iSelector, nil];
-    foreach(theControl, theControls) {
+	for(QSSearchObjectView *theControl in theControls) {
+//    foreach(theControl, theControls) {
 		//NSCell *theCell = [[[QSFancyObjectCell alloc] init] autorelease];
 		//[theControl setCell:theCell];
 		
@@ -220,8 +221,8 @@
 		[theControl setPreferredEdge:NSMinYEdge];
 		[theControl setResultsPadding:NSMinY([dSelector frame])];
 		[theControl setPreferredEdge:NSMinYEdge];
-		[(QSWindow *)[((QSSearchObjectView *)theControl)->resultController window] setHideOffset:NSMakePoint(0, NSMinY([iSelector frame]))];
-		[(QSWindow *)[((QSSearchObjectView *)theControl)->resultController window] setShowOffset:NSMakePoint(0, NSMinY([dSelector frame]))];
+		[(QSWindow *)[theControl->resultController window] setHideOffset:NSMakePoint(0, NSMinY([iSelector frame]))];
+		[(QSWindow *)[theControl->resultController window] setShowOffset:NSMakePoint(0, NSMinY([dSelector frame]))];
 		
         [(QSObjectCell *)theCell setShowDetails:NO];
 		//	[(QSObjectCell *)theCell setImagePosition:NSImageOnly];

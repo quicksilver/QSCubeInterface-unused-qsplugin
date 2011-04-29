@@ -7,8 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <QSInterface/QSResizingInterfaceController.h>
 
-@interface QSCubeInterface : QSCommandInterfaceController {
+@interface QSCubeInterface : QSResizingInterfaceController {
 	NSRect standardRect;
 	IBOutlet NSTextField *detailsTextField;
 	IBOutlet NSTextField *searchTextField;

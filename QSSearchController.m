@@ -850,7 +850,7 @@
 //
 //
 - (void)selectHome:(id)sender {
-	QSLog(@"act%d", allowNonActions);
+	NSLog(@"act%d", allowNonActions);
 	//	if (allowNonActions)
 	//		[self setObjectValue:[QSObject fileObjectWithPath:NSHomeDirectory()]];
 }
@@ -1850,7 +1850,7 @@
 //	return nil;
 //}
 - (void)switchToHistoryState:(int)i {
-	if (VERBOSE) QSLog(@"select in history %d %@", i, [historyArray valueForKeyPath:@"selection.displayName"]);
+	if (VERBOSE) NSLog(@"select in history %d %@", i, [historyArray valueForKeyPath:@"selection.displayName"]);
 	//	
 	if (i<[historyArray count])
 		[self setHistoryState:[historyArray objectAtIndex:i]]; 	
@@ -1880,7 +1880,7 @@
 }
 
 - (void)goForward:(id)sender {
-	if (VERBOSE) QSLog(@"goForward");
+	if (VERBOSE) NSLog(@"goForward");
 	if (historyIndex>0) {
 		[self switchToHistoryState:--historyIndex];
 	} else {
@@ -1888,7 +1888,7 @@
 	}
 }
 - (void)goBackward:(id)sender {
-	if (VERBOSE) QSLog(@"goBackward");
+	if (VERBOSE) NSLog(@"goBackward");
   
 	if (historyIndex == -1) {
 		[self updateHistory];
@@ -1990,11 +1990,11 @@
 				if ([historyArray count] >historyIndex) {
           //	if (VERBOSE) QSLog(@"history %@", [historyArray valueForKeyPath:@"selection.displayName"]);
 					if ([[[historyArray objectAtIndex:historyIndex+1] valueForKey:@"selection"] isEqual:parent]) {
-						if (VERBOSE) QSLog(@"Parent Missing, Using History");
+						if (VERBOSE) NSLog(@"Parent Missing, Using History");
 						[self goBackward:self];
 						return;
 					}
-					if (VERBOSE) QSLog(@"Parent Missing, No History, %@", [[historyArray objectAtIndex:0] valueForKey:@"selection"]);
+					if (VERBOSE) NSLog(@"Parent Missing, No History, %@", [[historyArray objectAtIndex:0] valueForKey:@"selection"]);
 				}
 				
 				if (!newObjects)
@@ -2010,12 +2010,12 @@
 				if (!newObjects && [historyArray count]) {
 					//					
 					if ([[[historyArray objectAtIndex:0] valueForKey:@"selection"] isEqual:parent]) {
-						if (VERBOSE) QSLog(@"Parent Missing, Using History");
+						if (VERBOSE) NSLog(@"Parent Missing, Using History");
 						
 						[self goBackward:self];
 						return;
 					}
-					if (VERBOSE) QSLog(@"Parent Missing, No History");
+					if (VERBOSE) NSLog(@"Parent Missing, No History");
 					
 				}
 			}
