@@ -147,9 +147,8 @@
 				2EDFB3D7136AD5F8009CBC26 /* Quicksilver.pch */,
 				2EDFB3D8136AD5F8009CBC26 /* Release.xcconfig */,
 			);
-			name = Configuration;
-			path = ../Quicksilver/Quicksilver/Configuration;
-			sourceTree = SOURCE_ROOT;
+			path = Configuration;
+			sourceTree = QS_SOURCE_ROOT;
 		};
 		32DBCF9E0370C38000C91783 /* Classes */ = {
 			isa = PBXGroup;
@@ -296,7 +295,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2EDFB3D5136AD5F8009CBC26 /* QSPlugIn_Debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "Cube Interface";
+				QS_BUILD_ROOT = /tmp/QS;
+				SYMROOT = "$(QS_BUILD_ROOT)/build";
 			};
 			name = Debug;
 		};
@@ -304,7 +307,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2EDFB3D6136AD5F8009CBC26 /* QSPlugIn_Release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "Cube Interface";
+				QS_BUILD_ROOT = /tmp/QS;
+				SYMROOT = "$(QS_BUILD_ROOT)/build";
 			};
 			name = Release;
 		};
@@ -312,6 +319,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2EDFB3D2136AD5F8009CBC26 /* Debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					/System/Library/PrivateFrameworks,
+					"~/Library/Frameworks",
+					"$(BUILT_PRODUCTS_DIR)",
+				);
 			};
 			name = Debug;
 		};
@@ -319,6 +332,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2EDFB3D8136AD5F8009CBC26 /* Release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					/System/Library/PrivateFrameworks,
+					"~/Library/Frameworks",
+					"$(BUILT_PRODUCTS_DIR)",
+				);
 			};
 			name = Release;
 		};
