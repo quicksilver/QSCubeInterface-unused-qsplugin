@@ -1850,7 +1850,9 @@
 //	return nil;
 //}
 - (void)switchToHistoryState:(int)i {
+#ifdef DEBUG
 	if (VERBOSE) NSLog(@"select in history %d %@", i, [historyArray valueForKeyPath:@"selection.displayName"]);
+#endif
 	//	
 	if (i<[historyArray count])
 		[self setHistoryState:[historyArray objectAtIndex:i]]; 	
@@ -1880,7 +1882,9 @@
 }
 
 - (void)goForward:(id)sender {
+#ifdef DEBUG
 	if (VERBOSE) NSLog(@"goForward");
+#endif
 	if (historyIndex>0) {
 		[self switchToHistoryState:--historyIndex];
 	} else {
@@ -1888,8 +1892,10 @@
 	}
 }
 - (void)goBackward:(id)sender {
+#ifdef DEBUG
 	if (VERBOSE) NSLog(@"goBackward");
-  
+#endif
+	
 	if (historyIndex == -1) {
 		[self updateHistory];
 		historyIndex = 0;
@@ -1990,11 +1996,15 @@
 				if ([historyArray count] >historyIndex) {
           //	if (VERBOSE) QSLog(@"history %@", [historyArray valueForKeyPath:@"selection.displayName"]);
 					if ([[[historyArray objectAtIndex:historyIndex+1] valueForKey:@"selection"] isEqual:parent]) {
+#ifdef DEBUG
 						if (VERBOSE) NSLog(@"Parent Missing, Using History");
+#endif
 						[self goBackward:self];
 						return;
 					}
+#ifdef DEBUG
 					if (VERBOSE) NSLog(@"Parent Missing, No History, %@", [[historyArray objectAtIndex:0] valueForKey:@"selection"]);
+#endif
 				}
 				
 				if (!newObjects)
@@ -2010,12 +2020,16 @@
 				if (!newObjects && [historyArray count]) {
 					//					
 					if ([[[historyArray objectAtIndex:0] valueForKey:@"selection"] isEqual:parent]) {
+#ifdef DEBUG
 						if (VERBOSE) NSLog(@"Parent Missing, Using History");
+#endif
 						
 						[self goBackward:self];
 						return;
 					}
+#ifdef DEBUG
 					if (VERBOSE) NSLog(@"Parent Missing, No History");
+#endif
 					
 				}
 			}
